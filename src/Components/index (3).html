@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trivia Café - 10 Preguntas</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6d4c41 0%, #3e2723 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  #game-container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 600px;
+    width: 100%;
+    animation: fadeIn 0.5s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  h1 {
+    color: #3e2723;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+  
+  #progress-bar {
+    background: #e0e0e0;
+    height: 25px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  #progress-fill {
+    background: linear-gradient(90deg, #8d6e63, #6d4c41);
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  #score-info {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: #5d4037;
+    font-weight: bold;
+  }
+  
+  #question-box {
+    margin-bottom: 25px;
+  }
+  
+  #question {
+    font-size: 22px;
+    color: #3e2723;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  #answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .answer-btn {
+    padding: 18px;
+    background: linear-gradient(135deg, #8d6e63, #6d4c41);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-weight: 500;
+  }
+  
+  .answer-btn:hover:not(:disabled) {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(109, 76, 65, 0.4);
+  }
+  
+  .answer-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  .answer-btn.correct {
+    background: linear-gradient(135deg, #66bb6a, #43a047);
+    animation: pulse 0.5s;
+  }
+  
+  .answer-btn.incorrect {
+    background: linear-gradient(135deg, #ef5350, #e53935);
+    animation: shake 0.5s;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+  
+  #result {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    min-height: 30px;
+  }
+  
+  #next-btn {
+    display: none;
+    margin: 20px auto 0;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #ffb74d, #ff9800);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  #next-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+  }
+  
+  #final-screen {
+    display: none;
+    text-align: center;
+    animation: fadeIn 0.5s;
+  }
+  
+  #final-screen h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #3e2723;
+  }
+  
+  #final-message {
+    font-size: 24px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+  #restart-btn {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #8d6e63, #6d4c41);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  #restart-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(109, 76, 65, 0.4);
+  }
+  
+  .emoji {
+    font-size: 60px;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div id="game-container">
+  <h1>☕ Trivia del Café ☕</h1>
+  
+  <div id="progress-bar">
+    <div id="progress-fill">0/10</div>
+  </div>
+  
+  <div id="score-info">Aciertos: <span id="correct-count">0</span> | Errores: <span id="wrong-count">0</span></div>
+  
+  <div id="question-box">
+    <h2 id="question"></h2>
+    <div id="answers"></div>
+    <div id="result"></div>
+    <button id="next-btn">Siguiente Pregunta →</button>
+  </div>
+  
+  <div id="final-screen">
+    <div class="emoji" id="final-emoji"></div>
+    <h2 id="final-title"></h2>
+    <div id="final-message"></div>
+    <button id="restart-btn">Jugar de Nuevo</button>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "¿Cuál es la principal plaga del café en Honduras?",
+    answers: ["Broca del café", "Gorgojo del maíz", "Mosca blanca", "Araña roja"],
+    correct: 0
+  },
+  {
+    question: "¿A qué altitud se cultiva el mejor café de altura en Honduras?",
+    answers: ["1200-1700 metros sobre el nivel del mar", "0-500 metros", "500-800 metros", "2500-3000 metros"],
+    correct: 0
+  },
+  {
+    question: "¿Qué enfermedad del café causó grandes pérdidas en Centroamérica en 2012?",
+    answers: ["Roya del café", "Ojo de gallo", "Antracnosis", "Mal de hilachas"],
+    correct: 0
+  },
+  {
+    question: "COHORSIL es una cooperativa que se dedica a:",
+    answers: ["Venta de café y productos agrícolas", "Venta de electrodomésticos", "Educación", "Textiles"],
+    correct: 0
+  },
+  {
+    question: "¿Cuántos años tarda aproximadamente una planta de café en dar su primera cosecha?",
+    answers: ["3-4 años", "1 año", "6 meses", "10 años"],
+    correct: 0
+  },
+  {
+    question: "La fermentación del café se realiza para:",
+    answers: ["Eliminar el mucílago y mejorar el sabor", "Aumentar el peso del grano", "Incrementar plagas", "Acelerar el secado"],
+    correct: 0
+  },
+  {
+    question: "¿Qué tipo de café es más apreciado en el mercado internacional?",
+    answers: ["Arábica", "Robusta", "Liberica", "Excelsa"],
+    correct: 0
+  },
+  {
+    question: "¿Cuál es una práctica recomendada para mejorar la calidad del café?",
+    answers: ["Poda y sombra adecuada", "Riego excesivo", "No fertilizar nunca", "Cosechar frutos verdes"],
+    correct: 0
+  },
+  {
+    question: "¿Qué porcentaje de humedad debe tener el café pergamino seco?",
+    answers: ["10-12%", "25-30%", "5%", "40%"],
+    correct: 0
+  },
+  {
+    question: "Bayer es una compañía conocida por:",
+    answers: ["Agroquímicos y productos para la salud", "Solo exportación de café", "Maquinaria pesada", "Ropa deportiva"],
+    correct: 0
+  },
+  {
+    question: "¿Qué nutriente es esencial para el crecimiento del cafeto?",
+    answers: ["Nitrógeno", "Helio", "Sodio", "Cloro"],
+    correct: 0
+  },
+  {
+    question: "¿En qué mes inicia la cosecha de café en Honduras?",
+    answers: ["Noviembre", "Enero", "Mayo", "Agosto"],
+    correct: 0
+  },
+  {
+    question: "¿Cuál es el color del grano de café maduro?",
+    answers: ["Rojo o amarillo", "Verde oscuro", "Café claro", "Negro"],
+    correct: 0
+  },
+  {
+    question: "¿Cómo se llama el proceso de quitar la cáscara del café seco?",
+    answers: ["Trillado o pilado", "Tostado", "Molido", "Fermentación"],
+    correct: 0
+  },
+  {
+    question: "¿Qué certificación garantiza prácticas sostenibles en el cultivo de café?",
+    answers: ["Rainforest Alliance o UTZ", "ISO 9001", "CE", "FDA"],
+    correct: 0
+  }
+];
+
+let currentQuestion = 0;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+let usedQuestions = [];
+
+function shuffle(array) {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
+
+function getRandomQuestion() {
+  let availableQuestions = questions.filter((q, index) => !usedQuestions.includes(index));
+  
+  if (availableQuestions.length === 0) {
+    availableQuestions = questions;
+    usedQuestions = [];
+  }
+  
+  const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+  const selectedQuestion = availableQuestions[randomIndex];
+  const originalIndex = questions.indexOf(selectedQuestion);
+  usedQuestions.push(originalIndex);
+  
+  return selectedQuestion;
+}
+
+function showQuestion() {
+  if (currentQuestion >= 10) {
+    showFinalScreen();
+    return;
+  }
+  
+  document.getElementById("result").textContent = "";
+  document.getElementById("next-btn").style.display = "none";
+  
+  const q = getRandomQuestion();
+  window.currentQ = q;
+  document.getElementById("question").textContent = q.question;
+  
+  const answersDiv = document.getElementById("answers");
+  answersDiv.innerHTML = "";
+  
+  const shuffledAnswers = shuffle(q.answers.map((a, index) => ({text: a, index: index})));
+  
+  shuffledAnswers.forEach(ans => {
+    const btn = document.createElement("button");
+    btn.textContent = ans.text;
+    btn.className = "answer-btn";
+    btn.dataset.index = ans.index;
+    btn.addEventListener("click", () => checkAnswer(ans.index, q.correct, btn));
+    answersDiv.appendChild(btn);
+  });
+  
+  updateProgress();
+}
+
+function checkAnswer(selected, correct, clickedBtn) {
+  const resultDiv = document.getElementById("result");
+  const allButtons = document.querySelectorAll(".answer-btn");
+  
+  allButtons.forEach(btn => {
+    btn.disabled = true;
+  });
+  
+  if (selected === correct) {
+    resultDiv.textContent = "✅ ¡Correcto!";
+    resultDiv.style.color = "#43a047";
+    clickedBtn.classList.add("correct");
+    correctAnswers++;
+  } else {
+    resultDiv.textContent = "❌ Incorrecto";
+    resultDiv.style.color = "#e53935";
+    clickedBtn.classList.add("incorrect");
+    wrongAnswers++;
+    
+    allButtons.forEach(btn => {
+      if (parseInt(btn.dataset.index) === correct) {
+        btn.classList.add("correct");
+      }
+    });
+  }
+  
+  currentQuestion++;
+  updateScoreInfo();
+  
+  if (currentQuestion < 10) {
+    document.getElementById("next-btn").style.display = "block";
+  } else {
+    setTimeout(showFinalScreen, 1500);
+  }
+}
+
+function updateProgress() {
+  const progressFill = document.getElementById("progress-fill");
+  const percentage = (currentQuestion / 10) * 100;
+  progressFill.style.width = percentage + "%";
+  progressFill.textContent = currentQuestion + "/10";
+}
+
+function updateScoreInfo() {
+  document.getElementById("correct-count").textContent = correctAnswers;
+  document.getElementById("wrong-count").textContent = wrongAnswers;
+}
+
+function showFinalScreen() {
+  document.getElementById("question-box").style.display = "none";
+  document.getElementById("final-screen").style.display = "block";
+  
+  const finalEmoji = document.getElementById("final-emoji");
+  const finalTitle = document.getElementById("final-title");
+  const finalMessage = document.getElementById("final-message");
+  
+  if (correctAnswers >= 6) {
+    finalEmoji.textContent = "🏆";
+    finalTitle.textContent = "¡Felicidades!";
+    finalTitle.style.color = "#43a047";
+    finalMessage.innerHTML = `Has ganado con <strong>${correctAnswers}</strong> respuestas correctas de 10.<br>¡Eres todo un experto del café! ☕`;
+    finalMessage.style.color = "#43a047";
+  } else {
+    finalEmoji.textContent = "😢";
+    finalTitle.textContent = "¡Casi lo logras!";
+    finalTitle.style.color = "#e53935";
+    finalMessage.innerHTML = `Obtuviste <strong>${correctAnswers}</strong> respuestas correctas de 10.<br>Necesitabas 6 para ganar. ¡Inténtalo de nuevo!`;
+    finalMessage.style.color = "#5d4037";
+  }
+}
+
+function restartGame() {
+  currentQuestion = 0;
+  correctAnswers = 0;
+  wrongAnswers = 0;
+  usedQuestions = [];
+  
+  document.getElementById("question-box").style.display = "block";
+  document.getElementById("final-screen").style.display = "none";
+  
+  updateScoreInfo();
+  updateProgress();
+  showQuestion();
+}
+
+document.getElementById("next-btn").addEventListener("click", showQuestion);
+document.getElementById("restart-btn").addEventListener("click", restartGame);
+
+showQuestion();
+</script>
+
+</body>
+</html>
