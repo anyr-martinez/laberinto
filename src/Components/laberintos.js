@@ -53,13 +53,13 @@ const QUESTIONS = [
     correct: 0
   },
   {
-    question: "¿Qué nutriente es esencial para el crecimiento del cafeto?",
+    question: "¿Qué nutriente es esencial para el crecimiento del Café?",
     answers: ["Nitrógeno", "Helio", "Sodio", "Cloro"],
     correct: 0
   },
   {
     question: "¿En qué mes inicia la cosecha de café en Honduras?",
-    answers: ["Noviembre", "Enero", "Mayo", "Agosto"],
+    answers: ["Octubre", "Enero", "Mayo", "Agosto"],
     correct: 0
   },
   {
@@ -178,7 +178,7 @@ const TriviaCafe = () => {
   if (showFinal) {
     const win = correctCount >= 6;
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723] p-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-neutral-100 p-4">
         <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn text-center">
           <div className="text-6xl mb-4">{win ? '🏆' : '😢'}</div>
           <h2 className={`text-3xl font-bold mb-4 ${win ? 'text-green-700' : 'text-red-600'}`}>{win ? '¡Felicidades!' : '¡Casi lo logras!'}</h2>
@@ -210,7 +210,7 @@ const TriviaCafe = () => {
   const q = questionOrder.length ? QUESTIONS[questionOrder[currentIdx]] : null;
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723] p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-neutral-100 p-4">
       <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn">
         <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#3e2723] mb-4">☕ Trivia del Café ☕</h1>
         {/* Barra de progreso */}
