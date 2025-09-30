@@ -180,21 +180,21 @@ const TriviaCafe = () => {
   if (showFinal) {
     const win = correctCount >= 6;
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-neutral-100 p-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723] p-4">
         <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn text-center">
           {/* Logos centrados arriba del título */}
-          <div className="flex justify-center items-center gap-8 mb-4">
+          <div className="w-full flex justify-center items-center gap-20 mb-10 bg-white py-10 px-2 rounded-t-2xl">
             <img
               src={BayerLogo}
               alt="Bayer"
-              className="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-24 object-contain"
-              style={{ maxWidth: '320px', maxHeight: '150px' }}
+              className="w-56 h-36 sm:w-72 sm:h-48 lg:w-[28rem] lg:h-[12rem] object-contain"
+              style={{ maxWidth: '700px', maxHeight: '250px' }}
             />
             <img
               src={Logo2}
               alt="Logo2"
-              className="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-24 object-contain"
-              style={{ maxWidth: '320px', maxHeight: '150px' }}
+              className="w-56 h-36 sm:w-72 sm:h-48 lg:w-[28rem] lg:h-[12rem] object-contain"
+              style={{ maxWidth: '700px', maxHeight: '250px' }}
             />
           </div>
           <div className="text-6xl mb-4">{win ? '🏆' : '😢'}</div>
@@ -227,21 +227,21 @@ const TriviaCafe = () => {
   const q = questionOrder.length ? QUESTIONS[questionOrder[currentIdx]] : null;
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-neutral-100 p-4">
-      <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn">
+  <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723]">
+  <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn">
         {/* Logos centrados arriba del título */}
-        <div className="flex justify-center items-center gap-8 mb-4">
+  <div className="w-full flex justify-center items-center gap-16 mb-8 bg-white py-8 px-2 rounded-t-2xl">
           <img
             src={BayerLogo}
             alt="Bayer"
-            className="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-24 object-contain"
-            style={{ maxWidth: '320px', maxHeight: '150px' }}
+            className="w-40 h-28 sm:w-56 sm:h-36 lg:w-72 lg:h-48 object-contain"
+            style={{ maxWidth: '500px', maxHeight: '200px' }}
           />
           <img
             src={Logo2}
             alt="Logo2"
-            className="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-24 object-contain"
-            style={{ maxWidth: '320px', maxHeight: '150px' }}
+            className="w-40 h-28 sm:w-56 sm:h-36 lg:w-72 lg:h-48 object-contain"
+            style={{ maxWidth: '500px', maxHeight: '200px' }}
           />
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#3e2723] mb-4">☕ Trivia del Café ☕</h1>
