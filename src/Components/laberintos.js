@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
+import BayerLogo from "../Assets/BAYER.png";
+import Logo2 from "../Assets/logo2.png";
 
 const QUESTIONS = [
   {
@@ -180,6 +182,21 @@ const TriviaCafe = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-neutral-100 p-4">
         <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn text-center">
+          {/* Logos centrados arriba del título */}
+          <div className="flex justify-center items-center gap-8 mb-4">
+            <img
+              src={BayerLogo}
+              alt="Bayer"
+              className="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-24 object-contain"
+              style={{ maxWidth: '320px', maxHeight: '150px' }}
+            />
+            <img
+              src={Logo2}
+              alt="Logo2"
+              className="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-24 object-contain"
+              style={{ maxWidth: '320px', maxHeight: '150px' }}
+            />
+          </div>
           <div className="text-6xl mb-4">{win ? '🏆' : '😢'}</div>
           <h2 className={`text-3xl font-bold mb-4 ${win ? 'text-green-700' : 'text-red-600'}`}>{win ? '¡Felicidades!' : '¡Casi lo logras!'}</h2>
           <div className="text-2xl mb-8 leading-relaxed" style={{ color: win ? '#43a047' : '#5d4037' }}>
@@ -212,6 +229,21 @@ const TriviaCafe = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-neutral-100 p-4">
       <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn">
+        {/* Logos centrados arriba del título */}
+        <div className="flex justify-center items-center gap-8 mb-4">
+          <img
+            src={BayerLogo}
+            alt="Bayer"
+            className="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-24 object-contain"
+            style={{ maxWidth: '320px', maxHeight: '150px' }}
+          />
+          <img
+            src={Logo2}
+            alt="Logo2"
+            className="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-24 object-contain"
+            style={{ maxWidth: '320px', maxHeight: '150px' }}
+          />
+        </div>
         <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#3e2723] mb-4">☕ Trivia del Café ☕</h1>
         {/* Barra de progreso */}
         <div className="mb-4">
