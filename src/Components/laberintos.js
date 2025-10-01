@@ -26,7 +26,7 @@ const QUESTIONS = [
   },
   {
     question: "¿Cuántos años tarda aproximadamente una planta de café en dar su primera cosecha?",
-    answers: ["3-4 años", "1 año", "6 meses", "10 años"],
+    answers: ["2-3 años", "1 año", "6 meses", "10 años"],
     correct: 0
   },
   {
@@ -61,7 +61,7 @@ const QUESTIONS = [
   },
   {
     question: "¿En qué mes inicia la cosecha de café en Honduras?",
-    answers: ["Octubre", "Enero", "Mayo", "Agosto"],
+    answers: ["Octubre", "Noviembre", "Diciembre-Enero", "Todas Son Correctas"],
     correct: 0
   },
   {
@@ -239,6 +239,8 @@ const TriviaCafe = () => {
           />
           <img
             src={Logo2}
+
+            
             alt="Logo2"
             className="w-40 h-24 sm:w-56 sm:h-32 lg:w-72 lg:h-40 object-contain max-w-full"
             style={{ maxWidth: '100%', maxHeight: '160px' }}
