@@ -180,21 +180,21 @@ const TriviaCafe = () => {
   if (showFinal) {
     const win = correctCount >= 6;
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723] p-4">
+      <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723]">
         <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn text-center">
           {/* Logos centrados arriba del título */}
-          <div className="w-full flex justify-center items-center gap-20 mb-10 bg-white py-10 px-2 rounded-t-2xl">
+          <div className="w-full max-w-full flex justify-center items-center gap-10 mb-10 bg-white py-10 px-2 rounded-t-2xl overflow-hidden">
             <img
               src={BayerLogo}
               alt="Bayer"
-              className="w-56 h-36 sm:w-72 sm:h-48 lg:w-[28rem] lg:h-[12rem] object-contain"
-              style={{ maxWidth: '700px', maxHeight: '250px' }}
+              className="w-56 h-36 sm:w-72 sm:h-48 lg:w-[22rem] lg:h-[10rem] object-contain max-w-full"
+              style={{ maxWidth: '100%', maxHeight: '180px' }}
             />
             <img
               src={Logo2}
               alt="Logo2"
-              className="w-56 h-36 sm:w-72 sm:h-48 lg:w-[28rem] lg:h-[12rem] object-contain"
-              style={{ maxWidth: '700px', maxHeight: '250px' }}
+              className="w-56 h-36 sm:w-72 sm:h-48 lg:w-[22rem] lg:h-[10rem] object-contain max-w-full"
+              style={{ maxWidth: '100%', maxHeight: '180px' }}
             />
           </div>
           <div className="text-6xl mb-4">{win ? '🏆' : '😢'}</div>
@@ -230,18 +230,18 @@ const TriviaCafe = () => {
   <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723]">
   <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn">
         {/* Logos centrados arriba del título */}
-  <div className="w-full flex justify-center items-center gap-16 mb-8 bg-white py-8 px-2 rounded-t-2xl">
+  <div className="w-full max-w-full flex justify-center items-center gap-10 mb-8 bg-white py-8 px-2 rounded-t-2xl overflow-hidden">
           <img
             src={BayerLogo}
             alt="Bayer"
-            className="w-40 h-28 sm:w-56 sm:h-36 lg:w-72 lg:h-48 object-contain"
-            style={{ maxWidth: '500px', maxHeight: '200px' }}
+            className="w-40 h-28 sm:w-56 sm:h-36 lg:w-[22rem] lg:h-[10rem] object-contain max-w-full"
+            style={{ maxWidth: '100%', maxHeight: '180px' }}
           />
           <img
             src={Logo2}
             alt="Logo2"
-            className="w-40 h-28 sm:w-56 sm:h-36 lg:w-72 lg:h-48 object-contain"
-            style={{ maxWidth: '500px', maxHeight: '200px' }}
+            className="w-40 h-28 sm:w-56 sm:h-36 lg:w-[22rem] lg:h-[10rem] object-contain max-w-full"
+            style={{ maxWidth: '100%', maxHeight: '180px' }}
           />
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#3e2723] mb-4">☕ Trivia del Café ☕</h1>
