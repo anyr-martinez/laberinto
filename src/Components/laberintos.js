@@ -270,20 +270,20 @@ const TriviaCafe = () => {
       <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723]">
         <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn text-center">
           {/* Logos centrados arriba del título */}
-          <div className="w-full grid grid-cols-[1fr_1.45fr_1fr] gap-4 sm:gap-6 lg:gap-8 mb-10 bg-white py-8 px-2 rounded-t-2xl overflow-hidden max-w-4xl mx-auto">
+          <div className="w-full grid grid-cols-[0.8fr_1.8fr_0.8fr] items-center gap-3 sm:gap-4 lg:gap-6 mb-10 bg-white py-4 px-2 rounded-t-2xl overflow-hidden max-w-4xl mx-auto">
             <div className="flex items-center justify-center">
               <img
                 src={BayerLogo}
                 alt="Bayer"
-                className="w-32 h-20 sm:w-44 sm:h-28 lg:w-56 lg:h-32 object-contain max-w-full"
-                style={{ maxWidth: '100%', maxHeight: '128px' }}
+                className="w-14 h-10 sm:w-20 sm:h-14 lg:w-24 lg:h-16 object-contain max-w-full"
+                style={{ maxWidth: '100%', maxHeight: '64px' }}
               />
             </div>
             <div className="flex items-center justify-center">
               <img
                 src={cohorsil}
                 alt="COHORSIL"
-                className="w-56 h-32 sm:w-72 sm:h-40 lg:w-[26rem] lg:h-52 object-contain max-w-full"
+                className="w-[24rem] h-32 sm:w-[31rem] sm:h-40 lg:w-[40rem] lg:h-52 object-contain max-w-full"
                 style={{ maxWidth: '100%', maxHeight: '208px' }}
               />
             </div>
@@ -291,8 +291,8 @@ const TriviaCafe = () => {
               <img
                 src={syngenta}
                 alt="Syngenta"
-                className="w-32 h-20 sm:w-44 sm:h-28 lg:w-56 lg:h-32 object-contain max-w-full"
-                style={{ maxWidth: '100%', maxHeight: '128px' }}
+                className="w-20 h-10 sm:w-32 sm:h-14 lg:w-36 lg:h-16 object-contain max-w-full"
+                style={{ maxWidth: '100%', maxHeight: '64px' }}
               />
             </div>
           </div>
@@ -329,20 +329,20 @@ const TriviaCafe = () => {
   <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723]">
   <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn">
         {/* Logos centrados arriba del título */}
-        <div className="w-full grid grid-cols-[1fr_1.45fr_1fr] gap-4 sm:gap-6 lg:gap-8 mb-10 bg-white py-8 px-2 rounded-t-2xl overflow-hidden max-w-4xl mx-auto">
+        <div className="w-full grid grid-cols-[0.8fr_1.8fr_0.8fr] items-center gap-3 sm:gap-4 lg:gap-6 mb-10 bg-white py-4 px-2 rounded-t-2xl overflow-hidden max-w-4xl mx-auto">
           <div className="flex items-center justify-center">
             <img
               src={BayerLogo}
               alt="Bayer"
-              className="w-32 h-20 sm:w-44 sm:h-28 lg:w-56 lg:h-32 object-contain max-w-full"
-              style={{ maxWidth: '100%', maxHeight: '128px' }}
+              className="w-14 h-10 sm:w-20 sm:h-14 lg:w-24 lg:h-16 object-contain max-w-full"
+              style={{ maxWidth: '100%', maxHeight: '64px' }}
             />
           </div>
           <div className="flex items-center justify-center">
             <img
               src={cohorsil}
               alt="COHORSIL"
-              className="w-56 h-32 sm:w-72 sm:h-40 lg:w-[26rem] lg:h-52 object-contain max-w-full"
+              className="w-[24rem] h-32 sm:w-[31rem] sm:h-40 lg:w-[40rem] lg:h-52 object-contain max-w-full"
               style={{ maxWidth: '100%', maxHeight: '208px' }}
             />
           </div>
@@ -350,8 +350,8 @@ const TriviaCafe = () => {
             <img
               src={syngenta}
               alt="Syngenta"
-              className="w-32 h-20 sm:w-44 sm:h-28 lg:w-56 lg:h-32 object-contain max-w-full"
-              style={{ maxWidth: '100%', maxHeight: '128px' }}
+              className="w-20 h-10 sm:w-32 sm:h-14 lg:w-36 lg:h-16 object-contain max-w-full"
+              style={{ maxWidth: '100%', maxHeight: '64px' }}
             />
           </div>
         </div>
