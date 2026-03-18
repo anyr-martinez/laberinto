@@ -281,7 +281,7 @@ const TriviaCafe = () => {
             </div>
             <div className="flex items-center justify-center">
               <img
-                src={Logo2}
+                src={cohorsil}
                 alt="COHORSIL"
                 className="w-56 h-32 sm:w-72 sm:h-40 lg:w-[26rem] lg:h-52 object-contain max-w-full"
                 style={{ maxWidth: '100%', maxHeight: '208px' }}
@@ -340,7 +340,7 @@ const TriviaCafe = () => {
           </div>
           <div className="flex items-center justify-center">
             <img
-              src={Logo2}
+              src={cohorsil}
               alt="COHORSIL"
               className="w-56 h-32 sm:w-72 sm:h-40 lg:w-[26rem] lg:h-52 object-contain max-w-full"
               style={{ maxWidth: '100%', maxHeight: '208px' }}
