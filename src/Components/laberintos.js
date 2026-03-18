@@ -2,81 +2,167 @@
 import React, { useState, useEffect, useRef } from "react";
 import BayerLogo from "../Assets/BAYER.png";
 import Logo2 from "../Assets/logo2.png";
+import syngenta from "../Assets/syngenta.png";
 
 const QUESTIONS = [
   {
-    question: "¿Cuál es la principal plaga del café en Honduras?",
-    answers: ["Broca del café", "Gorgojo del maíz", "Mosca blanca", "Araña roja"],
+    question: "¿Qué se necesita para una nutrición estratégica del café?",
+    answers: [
+      "Análisis de suelo y fertilización",
+      "Aplicación empírica",
+      "Solo abono orgánico",
+      "Fertilización sin análisis"
+    ],
     correct: 0
   },
   {
-    question: "¿A qué altitud se cultiva el mejor café de altura en Honduras?",
-    answers: ["1200-1700 metros sobre el nivel del mar", "0-500 metros", "500-800 metros", "2500-3000 metros"],
+    question: "¿En qué etapa (semanas) el fruto del café alcanza su madurez fisiológica?",
+    answers: [
+      "Semana 26-32",
+      "Semana 14-20",
+      "Semana 20-26",
+      "Semana 32-40"
+],
     correct: 0
   },
   {
-    question: "¿Qué enfermedad del café causó grandes pérdidas en Centroamérica en 2012?",
-    answers: ["Roya del café", "Ojo de gallo", "Antracnosis", "Mal de hilachas"],
+    question: "COHORSIL exporta café a mercados internacionales directamente desde:",
+    answers: [
+      "2001",
+      "1998",
+      "2005",
+      "2010"
+    ],
     correct: 0
   },
   {
-    question: "COHORSIL es una cooperativa que se dedica a:",
-    answers: ["Venta de café y productos agrícolas", "Venta de electrodomésticos", "Educación", "Textiles"],
-    correct: 0
-  },
-  {
-    question: "¿Cuántos años tarda aproximadamente una planta de café en dar su primera cosecha?",
-    answers: ["2-3 años", "1 año", "6 meses", "10 años"],
-    correct: 0
-  },
-  {
-    question: "La fermentación del café se realiza para:",
-    answers: ["Eliminar el mucílago y mejorar el sabor", "Aumentar el peso del grano", "Incrementar plagas", "Acelerar el secado"],
-    correct: 0
-  },
-  {
-    question: "¿Qué tipo de café es más apreciado en el mercado internacional?",
-    answers: ["Arábica", "Robusta", "Liberica", "Excelsa"],
-    correct: 0
-  },
-  {
-    question: "¿Cuál es una práctica recomendada para mejorar la calidad del café?",
-    answers: ["Poda y sombra adecuada", "Riego excesivo", "No fertilizar nunca", "Cosechar frutos verdes"],
-    correct: 0
-  },
-  {
-    question: "¿Qué porcentaje de humedad debe tener el café pergamino seco?",
-    answers: ["10-12%", "25-30%", "5%", "40%"],
+    question: "La palabra \"café\" proviene del árabe \"qahwah\", que significaba:",
+    answers: [
+      "Bebida estimulante",
+      "Bebida caliente",
+      "Extracto medicinal",
+      "Bebida fermentada"
+    ],
     correct: 0
   },
   {
     question: "Bayer es una compañía conocida por:",
-    answers: ["Agroquímicos y productos para la salud", "Solo exportación de café", "Maquinaria pesada", "Ropa deportiva"],
+    answers: [
+      "Agroquímicos y salud",
+      "Exportación de café",
+      "Maquinaria pesada",
+      "Ropa deportiva"
+    ],
     correct: 0
   },
   {
-    question: "¿Qué nutriente es esencial para el crecimiento del Café?",
-    answers: ["Nitrógeno", "Helio", "Sodio", "Cloro"],
+    question: "Syngenta es una compañía conocida por:",
+    answers: [
+      "Tecnología agrícola",
+      "Exportación de café",
+      "Ropa deportiva",
+      "Electrónica"
+    ],
     correct: 0
   },
   {
-    question: "¿En qué mes inicia la cosecha de café en Honduras?",
-    answers: ["Octubre", "Noviembre", "Diciembre-Enero", "Todas Son Correctas"],
+    question: "¿Dónde se desarrollan los compuestos aromáticos del café?",
+    answers: [
+      "Tueste",
+      "Secado",
+      "Fermentación",
+      "Almacenamiento"
+    ],
     correct: 0
   },
   {
-    question: "¿Cuál es el color del grano de café maduro?",
-    answers: ["Rojo o amarillo", "Verde oscuro", "Café claro", "Negro"],
+    question: "¿En qué etapa se define el potencial de frutos del café?",
+    answers: [
+      "Floración",
+      "Crecimiento vegetativo",
+      "Llenado de grano",
+      "Postcosecha"
+    ],
     correct: 0
   },
   {
-    question: "¿Cómo se llama el proceso de quitar la cáscara del café seco?",
-    answers: ["Trillado o pilado", "Tostado", "Molido", "Fermentación"],
+    question: "¿Qué práctica mejora la calidad en taza del café?",
+    answers: [
+      "Cosecha selectiva",
+      "Cosecha general",
+      "Más fertilizante",
+      "Menos sombra"
+    ],
     correct: 0
   },
   {
-    question: "¿Qué certificación garantiza prácticas sostenibles en el cultivo de café?",
-    answers: ["Rainforest Alliance o UTZ", "ISO 9001", "CE", "FDA"],
+    question: "¿Por qué controlar la fermentación del café?",
+    answers: [
+      "Evitar defectos y mejorar sabor",
+      "Aumentar humedad",
+      "Secar más rápido",
+      "Aumentar peso"
+    ],
+    correct: 0
+  },
+  {
+    question: "¿Cuál es la función del lavado del café?",
+    answers: [
+      "Eliminar pulpa y mucílago",
+      "Ocultar defectos",
+      "Reducir el peso del grano",
+      "Iniciar secado"
+    ],
+    correct: 0
+  },
+  {
+    question: "¿Por qué es importante un secado uniforme del café?",
+    answers: [
+      "Evita hongos y conserva calidad",
+      "Eliminar la cáscara pergamino",
+      "Reduce la acidez",
+      "Mejora color"
+    ],
+    correct: 0
+  },
+  {
+    question: "¿Qué práctica reduce pérdidas en el cultivo de café?",
+    answers: [
+      "Manejo de plagas",
+      "Eliminar sombra",
+      "Aplicar abono sin monitoreo",
+      "Cosecha temprana"
+    ],
+    correct: 0
+  },
+  {
+    question: "¿Cómo influye la altitud en el café?",
+    answers: [
+      "Mejora sabor por maduración lenta",
+      "Aumenta tamaño del grano",
+      "Amplifica el aroma",
+      "No influye"
+    ],
+    correct: 0
+  },
+  {
+    question: "¿Cual es la Importancia del almacenamiento adecuado del café?",
+    answers: [
+      "Conservar la calidad",
+      "Aumentar el peso",
+      "Reducir acidez",
+      "Mejorar color"
+    ],
+    correct: 0
+  },
+  {
+    question: "¿Qué define la estrategia de COHORSIL en el sector cafetalero?",
+    answers: [
+      "Todas",
+      "Mejora de Calidad y trazabilidad",
+      "Fortalecimiento productivo y comercial",
+      "Cumplimiento de Estándares internacionales"
+    ],
     correct: 0
   }
 ];
@@ -178,13 +264,12 @@ const TriviaCafe = () => {
 
   // Pantalla final
   if (showFinal) {
-    const win = correctCount >= 6;
+    const win = correctCount >= 7;
     return (
       <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723]">
         <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn text-center">
           {/* Logos centrados arriba del título */}
-          <div className="w-full flex flex-wrap justify-center items-center gap-8 sm:gap-12 lg:gap-16 mb-10 bg-white py-8 px-2 rounded-t-2xl overflow-hidden max-w-4xl mx-auto">
-            <img
+          <div className="w-full grid grid-cols-3 gap-8 sm:gap-12 lg:gap-16 mb-10 bg-white py-8 px-2 rounded-t-2xl overflow-hidden max-w-4xl mx-auto">            <img
               src={BayerLogo}
               alt="Bayer"
               className="w-40 h-24 sm:w-56 sm:h-32 lg:w-72 lg:h-40 object-contain max-w-full"
@@ -193,6 +278,12 @@ const TriviaCafe = () => {
             <img
               src={Logo2}
               alt="COHORSIL"
+              className="w-40 h-24 sm:w-56 sm:h-32 lg:w-72 lg:h-40 object-contain max-w-full"
+              style={{ maxWidth: '100%', maxHeight: '160px' }}
+            />
+            <img
+              src={syngenta}
+              alt="Syngenta"
               className="w-40 h-24 sm:w-56 sm:h-32 lg:w-72 lg:h-40 object-contain max-w-full"
               style={{ maxWidth: '100%', maxHeight: '160px' }}
             />
@@ -208,7 +299,7 @@ const TriviaCafe = () => {
             ) : (
               <>
                 Obtuviste <strong>{correctCount}</strong> respuestas correctas de 10.<br />
-                Necesitabas 6 para ganar. ¡Inténtalo de nuevo!
+                Necesitabas 7 para ganar. ¡Inténtalo de nuevo!
               </>
             )}
           </div>
@@ -230,8 +321,7 @@ const TriviaCafe = () => {
   <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723]">
   <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn">
         {/* Logos centrados arriba del título */}
-  <div className="w-full flex flex-wrap justify-center items-center gap-8 sm:gap-12 lg:gap-16 mb-8 bg-white py-8 px-2 rounded-t-2xl overflow-hidden max-w-4xl mx-auto">
-          <img
+        <div className="w-full grid grid-cols-3 gap-8 sm:gap-12 lg:gap-16 mb-10 bg-white py-8 px-2 rounded-t-2xl overflow-hidden max-w-4xl mx-auto">          <img
             src={BayerLogo}
             alt="Bayer"
             className="w-40 h-24 sm:w-56 sm:h-32 lg:w-72 lg:h-40 object-contain max-w-full"
@@ -239,12 +329,16 @@ const TriviaCafe = () => {
           />
           <img
             src={Logo2}
-
-            
             alt="Logo2"
             className="w-40 h-24 sm:w-56 sm:h-32 lg:w-72 lg:h-40 object-contain max-w-full"
             style={{ maxWidth: '100%', maxHeight: '160px' }}
           />
+          <img
+              src={syngenta}
+              alt="Syngenta"
+              className="w-40 h-24 sm:w-56 sm:h-32 lg:w-72 lg:h-40 object-contain max-w-full"
+              style={{ maxWidth: '100%', maxHeight: '160px' }}
+            />
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#3e2723] mb-4">☕ Trivia del Café ☕</h1>
         {/* Barra de progreso */}
