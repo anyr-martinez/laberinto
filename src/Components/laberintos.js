@@ -26,7 +26,7 @@ const QUESTIONS = [
     correct: 0
   },
   {
-    question: "COHORSIL exporta café a mercados internacionales directamente desde:",
+    question: "COHORSIL exporta café a mercados internacionales directamente desde el año:",
     answers: [
       "2001",
       "1998",
@@ -38,10 +38,10 @@ const QUESTIONS = [
   {
     question: "La palabra \"café\" proviene del árabe \"qahwah\", que significaba:",
     answers: [
-      "Bebida estimulante",
+      "Vino o estimulante",
       "Bebida caliente",
       "Extracto medicinal",
-      "Bebida fermentada"
+      "Infusión fermentada"
     ],
     correct: 0
   },
@@ -66,7 +66,7 @@ const QUESTIONS = [
     correct: 0
   },
   {
-    question: "¿Dónde se desarrollan los compuestos aromáticos del café?",
+    question: "¿En qué etapa se desarrollan principalmente los compuestos aromáticos del café?",
     answers: [
       "Tueste",
       "Secado",
@@ -106,7 +106,7 @@ const QUESTIONS = [
     correct: 0
   },
   {
-    question: "¿Cuál es la función del lavado del café?",
+    question: "¿Qué función cumple el buen lavado del café?",
     answers: [
       "Eliminar pulpa y mucílago",
       "Ocultar defectos",
@@ -136,7 +136,7 @@ const QUESTIONS = [
     correct: 0
   },
   {
-    question: "¿Cómo influye la altitud en el café?",
+    question: "¿Cómo influye la altitud en el cultivo de café?",
     answers: [
       "Mejora sabor por maduración lenta",
       "Aumenta tamaño del grano",
