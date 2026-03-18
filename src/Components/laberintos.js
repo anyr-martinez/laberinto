@@ -7,9 +7,7 @@ import syngenta from "../Assets/syngenta.png";
 const QUESTIONS = [
   {
     question: "¿Qué se necesita para una nutrición estratégica del café?",
-    answers: [
-      "Análisis de suelo y fertilización",
-      "Aplicación empírica",
+    answers: ["Análisis de suelo y fertilización", "Aplicación empírica",
       "Solo abono orgánico",
       "Fertilización sin análisis"
     ],
@@ -218,7 +216,7 @@ const TriviaCafe = () => {
   }, [questionOrder, currentIdx]);
 
   const handleAnswer = (ansIdx) => {
-    if (selected !== null) return;
+    if (selected !== null || animating) return;
     setSelected(ansIdx);
     const q = QUESTIONS[questionOrder[currentIdx]];
     if (ansIdx === q.correct) {
@@ -231,9 +229,12 @@ const TriviaCafe = () => {
     setShowResult(true);
     setAnimating(true);
     // Si es la última pregunta, mostrar pantalla final tras un breve delay
-    if (currentIdx === TOTAL_QUESTIONS - 1) {
-      setTimeout(() => setShowFinal(true), 1200);
-    }
+    setTimeout(() => {
+      setAnimating(false);
+      if (currentIdx === TOTAL_QUESTIONS - 1) {
+        setShowFinal(true);
+      }
+    }, 500);
   };
 
   const handleNext = () => {
@@ -371,7 +372,7 @@ const TriviaCafe = () => {
                 <button
                   key={ans.text}
                   className={btnClass}
-                  disabled={selected !== null}
+                  disabled={selected !== null || animating}
                   onClick={() => handleAnswer(ans.index)}
                   style={{
                     transition: 'all 0.3s',
@@ -389,7 +390,7 @@ const TriviaCafe = () => {
             {showResult && (answerStatus === 'correct' ? '✅ ¡Correcto!' : '❌ Incorrecto')}
           </div>
           {/* Siguiente pregunta */}
-          {selected !== null && currentIdx < TOTAL_QUESTIONS - 1 && (
+          {selected !== null && !animating && currentIdx < TOTAL_QUESTIONS - 1 && (
             <button
               ref={nextBtnRef}
               className="block mx-auto mt-6 py-3 px-10 bg-gradient-to-br from-[#ffb74d] to-[#ff9800] text-white rounded-xl text-lg font-bold transition hover:scale-105 hover:shadow-lg"
