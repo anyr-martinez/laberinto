@@ -174,7 +174,7 @@ function shuffle(array) {
   return newArray;
 }
 
-const TOTAL_QUESTIONS = 10;
+const TOTAL_QUESTIONS = 5;
 
 const TriviaCafe = () => {
   const [questionOrder, setQuestionOrder] = useState([]);
@@ -265,7 +265,7 @@ const TriviaCafe = () => {
 
   // Pantalla final
   if (showFinal) {
-    const win = correctCount >= 7;
+    const win = correctCount >= 5;
     return (
       <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723]">
         <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-xl w-full animate-fadeIn text-center">
@@ -294,13 +294,13 @@ const TriviaCafe = () => {
           <div className="text-2xl mb-8 leading-relaxed" style={{ color: win ? '#43a047' : '#5d4037' }}>
             {win ? (
               <>
-                Has ganado con <strong>{correctCount}</strong> respuestas correctas de 10.<br />
+                Has ganado con <strong>{correctCount}</strong> respuestas correctas de 5.<br />
                 ¡Eres todo un experto del café! ☕
               </>
             ) : (
               <>
-                Obtuviste <strong>{correctCount}</strong> respuestas correctas de 10.<br />
-                Necesitabas 7 para ganar. ¡Inténtalo de nuevo!
+                Obtuviste <strong>{correctCount}</strong> respuestas correctas de 5.<br />
+                Necesitabas 5 para ganar. ¡Inténtalo de nuevo!
               </>
             )}
           </div>
