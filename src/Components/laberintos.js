@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import BayerLogo from "../Assets/BAYER.png";
-import Logo2 from "../Assets/logo2.png";
+import cohorsil from "../Assets/cohorsil.jpeg";
 import syngenta from "../Assets/syngenta.png";
 
 const QUESTIONS = [
@@ -277,10 +277,10 @@ const TriviaCafe = () => {
               style={{ maxWidth: '100%', maxHeight: '160px' }}
             />
             <img
-              src={Logo2}
+              src={cohorsil}
               alt="COHORSIL"
-              className="w-40 h-24 sm:w-56 sm:h-32 lg:w-72 lg:h-40 object-contain max-w-full"
-              style={{ maxWidth: '100%', maxHeight: '160px' }}
+              className="w-48 h-28 sm:w-64 sm:h-36 lg:w-80 lg:h-44 object-contain max-w-full"
+              style={{ maxWidth: '100%', maxHeight: '176px' }}
             />
             <img
               src={syngenta}
@@ -329,10 +329,10 @@ const TriviaCafe = () => {
             style={{ maxWidth: '100%', maxHeight: '160px' }}
           />
           <img
-            src={Logo2}
-            alt="Logo2"
-            className="w-40 h-24 sm:w-56 sm:h-32 lg:w-72 lg:h-40 object-contain max-w-full"
-            style={{ maxWidth: '100%', maxHeight: '160px' }}
+            src={cohorsil}
+            alt="COHORSIL"
+            className="w-48 h-28 sm:w-64 sm:h-36 lg:w-80 lg:h-44 object-contain max-w-full"
+            style={{ maxWidth: '100%', maxHeight: '176px' }}
           />
           <img
               src={syngenta}
