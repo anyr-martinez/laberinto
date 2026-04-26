@@ -5,6 +5,7 @@ import cohorsil from "../Assets/cohorsil.png";
 import syngenta from "../Assets/syngenta.png";
 import { ChevronLeft } from "lucide-react";
 
+
 const QUESTIONS = [
   {
     question: "¿Qué se necesita para una nutrición estratégica del café?",
@@ -331,7 +332,7 @@ const TriviaCafe = () => {
 
   return (
   <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6d4c41] to-[#3e2723]">
-  <div className="relative bg-white p-6 sm:p-8 rounded-2xl shadow-2xl w-[40vw] max-w-4xl min-h-[1070px] animate-fadeIn">
+  <div className="relative bg-white p-5 sm:p-6 lg:p-8 rounded-2xl shadow-2xl w-[94vw] sm:w-[88vw] lg:w-[72vw] xl:w-[60vw] max-w-5xl h-[940px] animate-fadeIn">
         {/* Logos centrados arriba del título */}
         <div className="w-full grid grid-cols-[0.8fr_1.8fr_0.8fr] items-center gap-3 sm:gap-4 lg:gap-6 mb-10 bg-white py-4 px-2 rounded-t-2xl overflow-hidden max-w-4xl mx-auto">
           <div className="flex items-center justify-center">
@@ -366,7 +367,7 @@ const TriviaCafe = () => {
   className="boton-volver"
   onClick={() => window.location.href = "https://juegos-cohorsil-libreria.vercel.app/"}
 >
-  <ChevronLeft size={40} />
+  <ChevronLeft size={35} />
 </button>
         {/* Barra de progreso */}
         <div className="mb-4">
