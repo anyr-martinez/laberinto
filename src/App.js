@@ -1,3 +1,4 @@
+import "./App.css";
 import Laberinto from "./Components/laberintos";
 
 function App() {
